@@ -10,6 +10,7 @@ export const Scenery = () => {
       <mesh receiveShadow castShadow position={[0, 0, 0]}>
         <primitive object={scenery.scene} />
       </mesh>
+      
       <SceneryColliders />
     </>
   );

@@ -1,36 +1,7 @@
-import { useEffect, useRef } from "react";
-import { Box } from "@react-three/drei";
-import { GUI } from "dat.gui";
+import { Box } from "@react-three/drei"
 import { RigidBody } from "@react-three/rapier";
 
 export const SceneryColliders = () => {
-  const cubeRef = useRef();
-
-  useEffect(() => {
-    const gui = new GUI();
-    gui.add(cubeRef.current.position, "x", -15, 50).step(0.01).name("pos-x");
-    gui.add(cubeRef.current.position, "y", -15, 15).step(0.01).name("pos-y");
-    gui.add(cubeRef.current.position, "z", -15, 50).step(0.01).name("pos-z");
-    gui.add(cubeRef.current.scale, "x", 0, 50).name("scale-x");
-    gui.add(cubeRef.current.scale, "y", 0, 50).name("scale-y");
-    gui.add(cubeRef.current.scale, "z", 0, 50).name("scale-z");
-    gui
-      .add(cubeRef.current.rotation, "x", 0, Math.PI * 2)
-      .step(0.01)
-      .name("rot-x");
-    gui
-      .add(cubeRef.current.rotation, "y", 0, Math.PI * 2)
-      .step(0.01)
-      .name("rot-y");
-    gui
-      .add(cubeRef.current.rotation, "z", 0, Math.PI * 2)
-      .step(0.01)
-      .name("rot-z");
-    return () => {
-      gui.destroy();
-    };
-  }, []);
-
   return (
     <>
       <RigidBody
@@ -220,14 +191,6 @@ export const SceneryColliders = () => {
           <meshStandardMaterial visible={false} />
         </Box>
       </RigidBody>
-      <Box
-        ref={cubeRef}
-        position={[-5.67, 4.8, 1.14]}
-        scale={[0.3, 10, 14]}
-        rotation={[0, 0, 0]}
-      >
-        <meshStandardMaterial color={"red"} visible={false}/>
-      </Box>
     </>
   );
 };
