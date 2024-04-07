@@ -6,16 +6,18 @@ import { Environment } from "@react-three/drei";
 import { HitGetter } from "./components/hit-getter";
 import { Modal } from "./ui/modal";
 import { ToolsBar } from "./ui/tools-bar";
+import { Logo } from "./ui/logo";
 
 function App() {
   return (
     <>
       <div id="pointer" />
+      <Logo />
       <Modal />
       <ToolsBar />
       <Canvas className="canvas-scene">
         <Suspense fallback={null}>
-          <Physics debug>
+          <Physics>
             <Scene />
           </Physics>
           <HitGetter />
