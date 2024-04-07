@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUiStore } from "../store/ui-store";
+import moviesData from "../data/movies-data.json";
 
 export const Modal = () => {
   const { isUiOpen, setUiOpened, highlighted } = useUiStore();
+  const [movieData, setMovieData] = useState();
 
   const handleClose = (e) => {
     e.stopPropagation();
@@ -21,13 +23,19 @@ export const Modal = () => {
     }
   }, [isUiOpen]);
 
+  useEffect(() => {
+    if (highlighted) {
+      setMovieData(moviesData.find((md) => md.id === highlighted));
+    }
+  }, [highlighted]);
+
   return (
     highlighted &&
     isUiOpen && (
       <div className="modal-background" onClick={(e) => e.stopPropagation()}>
         <div className="modal-container">
           <div className="modal-title">
-            {highlighted}
+            {movieData.title}
             <img
               src="/assets/img/close.png"
               width={25}
@@ -36,7 +44,10 @@ export const Modal = () => {
               style={{ cursor: "pointer" }}
             />
           </div>
-          <div className="modal-body">This pop up is opened</div>
+          <div className="modal-body">
+            <img src={movieData.coverArtUrl} width={400} />
+            {movieData.description}
+          </div>
         </div>
       </div>
     )
