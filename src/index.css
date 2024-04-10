@@ -9,7 +9,7 @@ body {
 }
 
 .canvas-scene {
-  background-color: grey;
+  background-color: black;
   height: 100vh !important;
 }
 
@@ -145,7 +145,7 @@ body {
   font-weight: bold;
 }
 
-.logo-container{
+.logo-container {
   position: fixed;
   top: 20px;
   left: 20px;
