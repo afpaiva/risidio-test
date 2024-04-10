@@ -39,7 +39,8 @@ body {
   align-items: start;
   width: 100vw;
   height: 100vh;
-  background-color: #a90010;
+  background-color: #a90011b5;
+  backdrop-filter: blur(10px);
   z-index: 4;
 }
 

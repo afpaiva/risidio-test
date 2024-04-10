@@ -9,18 +9,10 @@ export const Modal = () => {
   const handleClose = (e) => {
     e.stopPropagation();
     setUiOpened(false);
-    document.body.requestPointerLock =
-      document.body.requestPointerLock ||
-      document.body.mozRequestPointerLock ||
-      document.body.webkitRequestPointerLock;
-    document.body.requestPointerLock();
   };
 
   useEffect(() => {
     if (isUiOpen && !highlighted) setUiOpened(false);
-    if (isUiOpen && highlighted) {
-      document.exitPointerLock();
-    }
   }, [isUiOpen]);
 
   useEffect(() => {
@@ -31,7 +23,8 @@ export const Modal = () => {
 
   return (
     highlighted &&
-    isUiOpen && (
+    isUiOpen &&
+    movieData && (
       <div className="modal-background" onClick={(e) => e.stopPropagation()}>
         <div className="modal-container">
           <div className="modal-title">
