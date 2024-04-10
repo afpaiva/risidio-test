@@ -2,12 +2,10 @@ import { useKeyboard, useMouseCapture } from "../hooks";
 import { Player } from "./player";
 import { Walls } from "./walls";
 import { Scenery } from "./scenery";
-import { useUiStore } from "../store/ui-store";
 
 export const Scene = () => {
-  const { builderMode } = useUiStore();
   const keyboard = useKeyboard();
-  const mouse = useMouseCapture(builderMode);
+  const mouse = useMouseCapture();
 
   const getInput = (keyboard, mouse) => {
     let [x, y, z] = [0, 0, 0];
@@ -28,9 +26,7 @@ export const Scene = () => {
     <group>
       <Scenery />
       <Walls />
-      {!builderMode && (
-        <Player walk={0.15} jump={1} input={() => getInput(keyboard, mouse)} />
-      )}
+      <Player walk={0.15} jump={1} input={() => getInput(keyboard, mouse)} />
     </group>
   );
 };

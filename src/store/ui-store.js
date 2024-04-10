@@ -5,6 +5,4 @@ export const useUiStore = create((set) => ({
   setUiOpened: (value) => set(() => ({ isUiOpen: value })),
   highlighted: null,
   setHighlighted: (value) => set(() => ({ highlighted: value })),
-  builderMode: false,
-  setBuilderMode: (value) => set(() => ({ builderMode: value })),
 }));
